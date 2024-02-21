@@ -1,7 +1,22 @@
 #!/bin/bash
 
-# Exit immediately if a command exits with a non-zero status.
-set -e
+
+# Copyright 2024-present Gradient Dynamics LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+
+set -e  # Exit immediately if a command exits with a non-zero status.
 
 # Configuration variables.
 BUILD_DIR="$(pwd)/u22.04-autoinstall-ISO"
@@ -12,7 +27,7 @@ OUTPUT_ISO="${BUILD_DIR}/ubuntu-22.04-autoinstall.iso"
 SERVER_DIR="${SOURCE_DIR}/server"
 DEFAULT_USER_DATA_FILE="${SERVER_DIR}/user-data"
 META_DATA_FILE="${SERVER_DIR}/meta-data"
-USER_DATA_FILE_USED="" # Variable to track the full path of the user-data file used
+USER_DATA_FILE_USED=""  # Variable to track the full path of the user-data file used
 
 # Ensures the creation of essential directories.
 ensure_directories() {
@@ -48,7 +63,7 @@ find_user_data() {
     # Fallback to the default user-data file if no other is found.
     if [ -f "${DEFAULT_USER_DATA_FILE}" ]; then
         echo "Using default user-data file."
-        USER_DATA_FILE_USED="${DEFAULT_USER_DATA_FILE}" # Update to default if used
+        USER_DATA_FILE_USED="${DEFAULT_USER_DATA_FILE}"  # Update to default if used
         return 0
     else
         echo "No suitable user-data file found or provided. Exiting."
